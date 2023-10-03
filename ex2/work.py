@@ -1,8 +1,17 @@
 from math import ceil
 
 def calc_account(m):
-    # 実装は入れていません、自分で入れてください
-    pass
+    if m <= 0:
+        return None
+    if m <= 1700:
+        return 610
+
+    elif (((m - 1700) % 315) == 0):
+        return ((m - 1700) // 315) * 80 + 610
+
+    else:
+        return ((m - 1700) // 315 + 1) * 80 + 610
+
 
 if __name__ == "__main__":
     from argparse import ArgumentParser
@@ -18,5 +27,3 @@ if __name__ == "__main__":
         print("不正な数値です、1以上の整数値を渡してください", file=sys.stderr)
         sys.exit(1)
     print(f"走行距離 {args.distance}m => 金額は {calc_account(args.distance)}円です。")
-
-
